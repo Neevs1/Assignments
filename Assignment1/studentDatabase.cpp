@@ -9,6 +9,7 @@ struct Student{
 
 void bsort(struct Student[]);
 void inSort(struct Student[]);
+void qSort(struct Student[]);
 
 int main(){
     struct Student se_it[15]={{15,"X",8.77},{12,"P",9.54},{13,"Q",6.22},{14,"W",7.55},{5,"E",9.23},
@@ -52,7 +53,6 @@ void inSort(struct Student arr[]){
         keyr=arr[i].rollNum;
         keys=arr[i].sgpa;
         j=i-1;
-        //cout<<key<<" "<<j<<endl;
         while(j>=0){
             if(arr[j].name<key){
                 break;
