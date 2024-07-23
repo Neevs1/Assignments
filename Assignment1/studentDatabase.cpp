@@ -9,7 +9,8 @@ struct Student{
 
 void bsort(struct Student[]);
 void inSort(struct Student[]);
-void qSort(struct Student[]);
+void qSort(struct Student[],int,int);
+int partition(struct Student[],int,int);
 
 int main(){
     struct Student se_it[15]={{15,"X",8.77},{12,"P",9.54},{13,"Q",6.22},{14,"W",7.55},{5,"E",9.23},
@@ -74,4 +75,32 @@ void inSort(struct Student arr[]){
         cout<<arr[i].rollNum<<" "<<arr[i].name<<" "<<arr[i].sgpa;
         cout<<endl;
     }
+}
+
+void swap(int *a, int *b){
+    int temp = *a;
+    *a =*b;
+    *b = temp;
+}
+
+int partition(Student arr[],int low,int high){
+    float pivot = arr[high].sgpa;
+    int i = low-1;
+    for(int j = low;j<high;j++){
+        if(arr[j].sgpa<=pivot){
+            i++;
+            swap(&arr[i],&arr[j]);
+        }
+    }
+    swap(&arr[i+1],&arr[high]);
+    return (i+1);
+}
+
+void qSort(struct Student arr[],int low,int high){
+    if (low < high) {
+    
+    int pi = partition(arr, low, high);
+    qSort(arr, low, pi - 1);
+    qSort(arr, pi + 1, high);
+  }
 }
