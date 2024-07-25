@@ -56,13 +56,9 @@ void bsort(Student  arr[],int length){
 
 void inSort(struct Student arr[],int length)
 {
-    int j;//,keyr;
-   // float keys;
-    //string key;
+    int j;
     for(int i=1;i<length+1;i++){
         Student key=arr[i];
-       /* keyr=arr[i].rollNum;
-        keys=arr[i].sgpa;*/
         j=i-1;
         while(j>=0){
             if(arr[j].name<key.name){
