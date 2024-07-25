@@ -11,6 +11,7 @@ void bsort(struct Student[],int);
 void inSort(struct Student[],int);
 void qSort(struct Student[],int,int);
 int partition(struct Student[],int,int);
+void gpasearch(struct Student[],int);
 
 int main(){
     struct Student se_it[15]={{15,"X",8.77},{12,"P",9.54},{13,"Q",6.22},{14,"W",7.55},{5,"E",9.23},
@@ -29,6 +30,8 @@ int main(){
         cout<<se_it[i].rollNum<<" "<<se_it[i].name<<" "<<se_it[i].sgpa<<endl;
         
     }
+    cout<<endl;
+    gpasearch(se_it,length);
 
     return 0;
 }
@@ -105,4 +108,21 @@ void qSort(struct Student arr[],int low,int high){
     qSort(arr, low, pi - 1);
     qSort(arr, pi + 1, high);
   }
+}
+
+void gpasearch(Student arr[],int length){
+    float target;
+    int counter=-1;
+    cout<<"Enter CGPA of student to be found ";
+    cin>>target;
+    for(int i=0;i<length;i++){
+        if(target==arr[i].sgpa){
+            cout<<"Student having CGPA "<<target<<" is "<<arr[i].name<<" and their roll no is "<<arr[i].rollNum<<endl;
+            counter++;
+        }
+    }
+    if(counter<0){
+        cout<<"No student having CGPA "<<target<<" found"<<endl;
+    }
+
 }
