@@ -12,18 +12,22 @@ void inSort(struct Student[],int);
 void qSort(struct Student[],int,int);
 int partition(struct Student[],int,int);
 void gpasearch(struct Student[],int);
+int namesearch(struct Student[],int,int);
+void print(struct Student[],int);
 
 int main(){
     struct Student se_it[15]={{15,"X",8.77},{12,"P",9.54},{13,"Q",6.22},{14,"W",7.55},{5,"E",9.23},
     {6,"R",5.40},{10,"T",8.77},{8,"Y",5.68},{7,"U",9.18},{9,"I",7.89},
     {11,"O",8.90},{1,"A",7.25},{3,"S",8.04},{4,"D",7.79},{2,"F",9.33}};
+    //GPA sourced from random number generator online
     int length = sizeof(se_it)/sizeof(se_it[0]);
     
 
     bsort(se_it,length-1);
-    cout<<endl;
+    
     inSort(se_it,length-1);
-    cout<<endl;
+    cout<<"Sorted alphabetically";
+    print(se_it,length);
     qSort(se_it,0,length-1);
     cout<<"10 toppers in classroom are"<<endl;
     for(int i=14;i>4;i--){
@@ -32,8 +36,18 @@ int main(){
     }
     cout<<endl;
     gpasearch(se_it,length);
+    int result = namesearch(se_it,length-1,0);
+    (result==-1)?cout<<"Given name is not in array"<<endl: cout<<"Given name is present at array having roll number "<<se_it[result].rollNum<<endl;
 
     return 0;
+}
+
+void print(Student arr[],int length){
+   for(int i=0;i<length;i++){
+        cout<<arr[i].rollNum<<" "<<arr[i].name<<" "<<arr[i].sgpa;
+        cout<<"\n";
+    }
+    cout<<endl;
 }
 
 void bsort(Student  arr[],int length){
@@ -49,10 +63,7 @@ void bsort(Student  arr[],int length){
         }
     }
     cout<<"List sorted by roll number is"<<endl;
-    for(int i=0;i<length+1;i++){
-        cout<<arr[i].rollNum<<" "<<arr[i].name<<" "<<arr[i].sgpa;
-        cout<<"\n";
-    }
+    print(arr,length+1);   
 }
 
 
@@ -60,7 +71,7 @@ void bsort(Student  arr[],int length){
 void inSort(struct Student arr[],int length)
 {
     int j;
-    for(int i=1;i<length+1;i++){
+    for(int i=1;i<length;i++){
         Student key=arr[i];
         j=i-1;
         while(j>=0){
@@ -78,12 +89,8 @@ void inSort(struct Student arr[],int length)
         }
             
     }
-    std::cout<<"Sorted alphabetically"<<endl;
-    for(int i =0;i<15;i++){
-        
-        std::cout<<arr[i].rollNum<<" "<<arr[i].name<<" "<<arr[i].sgpa;
-        std::cout<<endl;
-    }
+    
+    
 }
 
 
@@ -124,5 +131,27 @@ void gpasearch(Student arr[],int length){
     if(counter<0){
         cout<<"No student having CGPA "<<target<<" found"<<endl;
     }
+
+}
+
+int namesearch(Student arr[],int high,int low){
+  inSort(arr,high);
+  string x;
+  cout<<"Enter name to be found"<<endl;
+  cin>>x;
+  while (low <= high) {
+        int mid = low + (high - low) / 2;
+
+        if (arr[mid].name == x){
+            return mid;
+        }
+        else if(arr[mid].name < x){
+             low = mid + 1;
+        }else{
+            high = mid - 1;}
+    }
+
+
+    return -1;
 
 }
