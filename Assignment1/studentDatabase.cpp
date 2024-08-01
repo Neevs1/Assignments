@@ -62,9 +62,7 @@ void print(Student arr[],int length){ //function for printing
 }
 
 void bsort(Student  arr[],int length){ //bubble sort function
-    int temp;
-    string tmp;
-    float t;
+   
    for(int i =0;i<length;i++){
         for(int j=0;j<length;j++){
             if(arr[j].rollNum>arr[j+1].rollNum){
