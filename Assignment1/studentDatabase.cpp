@@ -24,7 +24,7 @@ int partition(struct Student[],int,int);
 void gpasearch(struct Student[],int);
 int namesearch(struct Student[],int,int);
 void print(struct Student[],int);
-//declared all required fucntions
+//declared all required functions
 
 int main(){
     struct Student se_it[15]={{15,"X",8.77},{12,"P",9.54},{13,"Q",6.22},{14,"W",7.55},{5,"E",9.23},
