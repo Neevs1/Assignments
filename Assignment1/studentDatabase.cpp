@@ -3,7 +3,8 @@
   Roll no - 3069 
   CRN - 23103069
   Class - SE
-  Batch S3
+  Batch - S3
+  Subject - DSA Assignment 1
 */
 
 
@@ -23,7 +24,7 @@ int partition(struct Student[],int,int);
 void gpasearch(struct Student[],int);
 int namesearch(struct Student[],int,int);
 void print(struct Student[],int);
-//declared all required fucntions
+//declared all required functions
 
 int main(){
     struct Student se_it[15]={{15,"X",8.77},{12,"P",9.54},{13,"Q",6.22},{14,"W",7.55},{5,"E",9.23},
@@ -61,9 +62,7 @@ void print(Student arr[],int length){ //function for printing
 }
 
 void bsort(Student  arr[],int length){ //bubble sort function
-    int temp;
-    string tmp;
-    float t;
+   
    for(int i =0;i<length;i++){
         for(int j=0;j<length;j++){
             if(arr[j].rollNum>arr[j+1].rollNum){
