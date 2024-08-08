@@ -5,6 +5,7 @@ int enqueue(string[],int,int,int);
 int dequeue(string[],int,int,int);
 void print(string[],int,int,int);
 string isFull(int,int,int);
+string isEmpty(int,int);
 
 int main(){
     int length,front,rear;
@@ -14,7 +15,7 @@ int main(){
     front=-1;
     rear=-1;
     do{
-        cout<<"Enter operation of choice\n1.Enqueue\n2.Dequeue\n3.Check if full\n4.Print"<<endl;
+        cout<<"Enter operation of choice\n1.Enqueue\n2.Dequeue\n3.Print\n4.Check if full\n5.Check if empty"<<endl;
         int choice;
         cin>>choice;
         switch(choice){
@@ -31,7 +32,13 @@ int main(){
             }
             break;
             case 3:
+            print(queue,front,rear,length);
+            break;
+            case 4:
             cout<<isFull(front,rear,length)<<endl;
+            break;
+            case 5:
+            cout<<isEmpty(front,rear)<<endl;
             break;
             default:
             cout<<"Invalid operation"<<endl;
@@ -48,10 +55,7 @@ int enqueue(string queue[],int length,int front,int rear){
     
     if (rear!=-1&&(rear+1)%length==front){
         cout<<"Queue is full"<<endl;
-        /*for(int i=front;i<=rear;i++){
-            cout<<queue[i]<<" ";
-        }
-        cout<<endl;*/
+        
         print(queue,front,rear,length);
         return rear;
     }else if(rear==-1&&front==-1){
@@ -59,13 +63,10 @@ int enqueue(string queue[],int length,int front,int rear){
         string element;
         cout<<"Enter element"<<endl;
         cin>>element;
-        //cout<<rear;
+        
         queue[rear]=element;
         cout<<"Queue is now \n";
-        /*for(int i=front;i<=rear;i++){
-            cout<<queue[i]<<" ";
-        }
-        cout<<"\n";*/
+       
         print(queue,front,rear,length);
         return rear;
         
@@ -79,10 +80,7 @@ int enqueue(string queue[],int length,int front,int rear){
 
         cout<<"Queue is now \n";
         print(queue,front,rear,length);
-        /*for(int i=front;i<=rear;i++){
-            cout<<queue[i]<<" ";
-       }
-       cout<<endl;*/
+        
      return rear;
     }
     
@@ -100,11 +98,7 @@ int dequeue(string queue[],int front,int rear,int length){
     }else{
         cout<<"Dequeued element is "<<queue[front]<<endl;
         front=(front+1)%length;
-        /*cout<<"Queue is now \n";
-        for(int i=front;i<=rear;i++){
-           
-        }*/
-        //cout<<endl;
+        
         print(queue,front,rear,length);
         return front;
     }
@@ -121,15 +115,26 @@ string isFull(int front,int rear,int length){
 }
 
 void print(string queue[],int front,int rear,int length){
+    cout<<"[ ";
     if(rear<front){
         int l=length+rear;
         for(int i=front;i<=l;i++){
-             cout<<queue[(i%length)]<<" ";
+             cout<<queue[(i%length)]<<",";
         }
     }else{
         for(int i=front;i<=rear;i++){
-            cout<<queue[(i%length)]<<" ";
+            cout<<queue[(i%length)]<<",";
         }
     }
+    cout<<"]";
     cout<<endl;
+}
+
+string isEmpty(int front,int rear){
+    if (rear==1&&front==-1){
+        return "Queue is empty";
+    }else{
+        return "Queue not empty";
+    }
+    
 }
