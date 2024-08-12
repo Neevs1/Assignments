@@ -87,13 +87,13 @@ int enqueue(string queue[],int length,int front,int rear){
 }
 
 int dequeue(string queue[],int front,int rear,int length){
-    if(rear==-1){
+    if(front==-1){
         cout<<"Queue is empty"<<endl;
         return front;
-    }else if(rear==0 && front==0){
-        cout<<"Dequeued element is "<<queue[0];
+    }else if(front==rear){
+        cout<<"Dequeued element is "<<queue[front];
         cout<<"\nQueue is now empty"<<endl;
-        front--;
+        front=-1;
         return front;        
     }else{
         cout<<"Dequeued element is "<<queue[front]<<endl;
@@ -131,7 +131,7 @@ void print(string queue[],int front,int rear,int length){
 }
 
 string isEmpty(int front,int rear){
-    if (rear==1&&front==-1){
+    if (rear==-1&&front==-1){
         return "Queue is empty";
     }else{
         return "Queue not empty";
