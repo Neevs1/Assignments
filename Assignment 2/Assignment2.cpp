@@ -5,6 +5,7 @@
  Roll no 3069
 */
 #include <iostream>
+#include <cctype>
 using namespace std;
 
 
@@ -14,7 +15,7 @@ struct node{ //defined struct
   struct node *next;
 };
 
-node* createNode(struct node** head,int input){
+node* createNode(string input){
   node* new_node = (node*)malloc(sizeof(node));
   new_node->data = input;
   new_node->next = NULL;
@@ -32,6 +33,10 @@ int main(){
   int choice;
   cin>>choice;
   switch(choice){
+    case 1:
+    cout<<in2post();
+
+    
 
   }  
 
@@ -41,11 +46,27 @@ int main(){
 string in2post(){
   string input;
   string stop,exp;
+  bool isNum;
   do{
     cout<<"Enter element";
-    
+    cin>>input;
+    for(int i=0;i<input.length();i++){
+      if (isdigit(input[i])==false){
+        isNum = false;
+      }else{
+        isNum = true;
+      }
+    }
+    if(isNum==true){
+      exp.append(input);
+      exp.append(" ");
+    }
+    if(input=="+"||input=="-"||input=="*"||input=="/"){
+      createNode(input);
+    }
     
 
   }while(stop != "yes");
+  return exp;
 
 }
