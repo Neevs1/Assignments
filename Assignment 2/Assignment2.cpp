@@ -35,6 +35,7 @@ int main(){
   switch(choice){
     case 1:
     cout<<in2post();
+    break;
     default:
     cout<<"Option not yet available/invalid input";    
 
