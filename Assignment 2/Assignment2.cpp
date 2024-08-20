@@ -35,8 +35,8 @@ int main(){
   switch(choice){
     case 1:
     cout<<in2post();
-
-    
+    default:
+    cout<<"Option not yet available/invalid input";    
 
   }  
 
@@ -60,13 +60,14 @@ string in2post(){
     if(isNum==true){
       exp.append(input);
       exp.append(" ");
-    }
-    if(input=="+"||input=="-"||input=="*"||input=="/"){
+    }else if(input=="+"||input=="-"||input=="*"||input=="/"){
       createNode(input);
+    }else{
+      cout<<"Invalid input";
     }
-    
-
-  }while(stop != "yes");
+    cout<<"\nDo you wish to continue?(type 'yes' case sensitive to continue)";
+    cin>>stop;
+  }while(stop == "yes");
   return exp;
 
 }
