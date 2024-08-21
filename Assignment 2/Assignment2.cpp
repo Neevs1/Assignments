@@ -63,7 +63,7 @@ string in2post(Stack* stack){
   string input;
   string stop,exp;
   bool isNum;
-  do{
+  /*do{
     cout<<"Enter element";
     cin>>input;
     for(int i=0;i<input.length();i++){
@@ -83,9 +83,19 @@ string in2post(Stack* stack){
     }
     cout<<"\nDo you wish to continue?(type 'yes' case sensitive to continue)";
     cin>>stop;
-  }while(stop == "yes");
-  if(stack->head->data.empty()==false){
+  }while(stop == "yes");*/
+  cout<<"Enter expression"<<endl;
+  cin>>input;
+  for(int i=0;i<input.length();i++){
+    if(isalnum(input[i])==true){
+      exp+=input[i];
+    }else if(input[i]=='+'||input[i]=='-'||input[i]=='*'||input[i]=='/'){
+      exp+=' ';
+      
+    }
+  }
+  /*if(stack->head->data.empty()==false){
   exp.append(stack->head->data);}
-  return exp;
+  return exp;*/
 
 }
