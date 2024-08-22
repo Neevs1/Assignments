@@ -11,7 +11,7 @@ using namespace std;
 
 
 
-struct node{ //defined struct
+struct node{ //defined struct node
   char data;
   struct node *next;
 };
@@ -23,7 +23,7 @@ node* createNode(char input){
   return new_node;    
 }
 
-struct Stack{
+struct Stack{ //define stack
       node* head;
 };
 
@@ -42,10 +42,10 @@ int main(){
   cin>>choice;
   switch(choice){
     case 1:
-    cout<<in2post(&stack);
+    cout<<in2post(&stack)<<endl;
     break;
     case 2:
-    cout<<in2pre(&stack);
+    cout<<in2pre(&stack)<<endl;
     break;
     default:
     cout<<"Option not yet available/invalid input";    
@@ -81,8 +81,8 @@ string in2post(Stack* stack){
   for(int i=0;i<input.length();i++){
     if(isdigit(input[i])||isalpha(input[i])){
       exp.append(1,input[i]);
-      //cout<<input[i];
-    }else if(input[i]=='+'||input[i]=='-'||input[i]=='*'||input[i]=='/'){
+      
+    }else if(input[i]=='+'||input[i]=='-'||input[i]=='*'||input[i]=='/'||input[i]=='('||input[i]==')'){
       exp+=' ';
       if((stack->head->data=='*'||stack->head->data=='/')&&(input[i]=='+'||input[i]=='-')){
        while(counter>0){
@@ -93,15 +93,27 @@ string in2post(Stack* stack){
        }
        push(stack,input[i]);
        counter++;
+      }else if(input[i]==')'){
+        while(stack->head->data!='('){
+          exp.push_back(pop(stack));
+          counter--;
+       }
+        char t=pop(stack);
+        counter--;        
+        
       }else{
         push(stack,input[i]);
         counter++;
       }
     }
   }
-  if(stack!=NULL){
-    exp+=stack->head->data;
+  while(counter>0){
+        if(stack!=NULL){
+          exp.push_back(pop(stack));
+          counter--;
+        }
   }
+  
   return exp;
 
 }
@@ -111,6 +123,25 @@ string in2pre(Stack* stack){
   cout<<"Enter infix expression"<<endl;
   cin>>input;
   reverse(input.begin(),input.end());
+  for(int i=0;i<input.length();i++){
+    if(input[i]==')'){
+      input[i]='$';
+    }else if(input[i]=='('){
+      input[i]='@';
+    }
+  }
+  for(int i=0;i<input.length();i++){
+    
+  }
+  
+  for(int i=0;i<input.length();i++){
+    if(input[i]=='$'){
+      input[i]='(';
+    }else if(input[i]=='@'){
+      input[i]=')';
+    }
+    }
+  cout<<"Reversed input is"<<input<<endl;
   string exp="";
   int counter=0;
   
@@ -118,8 +149,8 @@ string in2pre(Stack* stack){
   for(int i=0;i<input.length();i++){
     if(isdigit(input[i])||isalpha(input[i])){
       exp.append(1,input[i]);
-      //cout<<input[i];
-    }else if(input[i]=='+'||input[i]=='-'||input[i]=='*'||input[i]=='/'){
+      
+    }else if(input[i]=='+'||input[i]=='-'||input[i]=='*'||input[i]=='/'||input[i]=='('||input[i]==')'){
       exp+=' ';
       if((stack->head->data=='*'||stack->head->data=='/')&&(input[i]=='+'||input[i]=='-')){
        while(counter>0){
@@ -130,14 +161,25 @@ string in2pre(Stack* stack){
        }
        push(stack,input[i]);
        counter++;
+      }else if(input[i]==')'){
+        while(stack->head->data!='('){
+          exp.push_back(pop(stack));
+          counter--;
+       }
+        char t=pop(stack);
+        counter--;        
+        
       }else{
         push(stack,input[i]);
         counter++;
       }
     }
   }
-  if(stack!=NULL){
-    exp+=stack->head->data;
+  while(counter>0){
+        if(stack!=NULL){
+          exp.push_back(pop(stack));
+          counter--;
+        }
   }
   reverse(exp.begin(),exp.end());
   return exp;
