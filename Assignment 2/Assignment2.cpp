@@ -31,7 +31,7 @@ struct Stack{ //define stack
 
 string in2post(Stack*);
 string in2pre(Stack*);
-void evalPost();
+double evalPost(Stack*);
 void evalPre();
 
 int main(){
@@ -185,5 +185,36 @@ string in2pre(Stack* stack){
   return exp;
 
   
+
+}
+
+double evalpost(Stack* stack){
+  string input;
+  cout<<"Enter postfix expression to be evaluated"<<endl;
+  cin>>input;
+  double answer=0;
+  for(int i=0;i<input.length();i++){
+    if(isdigit(input[i])){
+      push(stack,input[i]);
+
+    }else if(input[i]=='+'||input[i]=='-'||input[i]=='*'||input[i]=='/'){
+      double a = pop(stack);
+      double b = pop(stack);
+      switch(input[i]){
+        case '+':
+        answer=a+b;
+        break;
+        case '-':
+        answer=a-b;
+        break;
+        case '*':
+        answer=a*b;
+        break;
+        case '/':
+        answer=a/b;
+        break;
+      }
+    }
+  }
 
 }
