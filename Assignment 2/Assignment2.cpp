@@ -198,8 +198,8 @@ double evalpost(Stack* stack){
       push(stack,input[i]);
 
     }else if(input[i]=='+'||input[i]=='-'||input[i]=='*'||input[i]=='/'){
-      double a = pop(stack);
-      double b = pop(stack);
+      double a = (double)pop(stack);
+      double b = (double)pop(stack);
       switch(input[i]){
         case '+':
         answer=a+b;
@@ -214,6 +214,7 @@ double evalpost(Stack* stack){
         answer=a/b;
         break;
       }
+      push(stack,answer);
     }
   }
 
