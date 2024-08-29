@@ -16,26 +16,41 @@ struct node{ //defined struct node
   struct node *next;
 };
 
+struct evalNode{
+  double dat;
+  struct evalNode *next;
+};
+
 node* createNode(char input){
   node* new_node = (node*)malloc(sizeof(node));
   new_node->data = input;
   new_node->next = NULL;
   return new_node;    
 }
-
+evalNode* createNode(double input){
+  evalNode* new_node = (evalNode*)malloc(sizeof(evalNode));
+  new_node->dat = input;
+  new_node->next = NULL;
+  return new_node;    
+}
 struct Stack{ //define stack
       node* head;
+};
+
+struct evalStack{
+  evalNode* head;
 };
 
 
 
 string in2post(Stack*);
 string in2pre(Stack*);
-double evalPost(Stack*);
-void evalPre();
+double evalPost(evalStack*);
+double evalPre(evalStack*);
 
 int main(){
   Stack stack;
+  evalStack stack1;
   cout<<"Enter choice of operation\n1.Infix to postfix\n2.Infix to Prefix";
   cout<<"\n3.Evaluate postfix\n4.Evaluate prefix"<<endl;
   int choice;
@@ -47,8 +62,14 @@ int main(){
     case 2:
     cout<<in2pre(&stack)<<endl;
     break;
+    case 3:
+    cout<<evalPost(&stack1)<<endl;
+    break;
+    case 4:
+    cout<<evalPre(&stack1)<<endl;
+    break;
     default:
-    cout<<"Option not yet available/invalid input";    
+    cout<<"Option not yet available/invalid input"<<endl;;    
 
   }  
 
@@ -61,9 +82,23 @@ void push(Stack* stack,char input){
   stack->head= new_node;
 }
 
+void push(evalStack* stack,double input){
+  evalNode *new_node = createNode(input);
+  new_node->next=stack->head;
+  stack->head= new_node;
+}
+
 char pop(Stack* stack){
   char t = stack->head->data;
   node* temp = stack->head;
+  stack->head = (stack->head)->next;
+  free(temp);
+  return t;
+}
+
+double pop(evalStack* stack){
+  double t = stack->head->dat;
+  evalNode* temp = stack->head;
   stack->head = (stack->head)->next;
   free(temp);
   return t;
@@ -188,34 +223,83 @@ string in2pre(Stack* stack){
 
 }
 
-double evalpost(Stack* stack){
+double evalPost(evalStack* stack){
   string input;
   cout<<"Enter postfix expression to be evaluated"<<endl;
   cin>>input;
   double answer=0;
   for(int i=0;i<input.length();i++){
     if(isdigit(input[i])){
-      push(stack,input[i]);
+      double x = input[i] -48;
+      push(stack,x);
 
     }else if(input[i]=='+'||input[i]=='-'||input[i]=='*'||input[i]=='/'){
-      double a = (double)pop(stack);
-      double b = (double)pop(stack);
+      double a = pop(stack);
+      double b = pop(stack);
       switch(input[i]){
         case '+':
         answer=a+b;
         break;
         case '-':
         answer=a-b;
+        
         break;
         case '*':
-        answer=a*b;
+        answer=(a*b);
+        
         break;
         case '/':
-        answer=a/b;
+        answer=(a/b);
+        
         break;
       }
       push(stack,answer);
     }
   }
+  if(answer< 0){
+    return pop(stack)*-1;
+  }else{
+  return pop(stack);
+}
+}
 
+double evalPre(evalStack* stack){
+  string input;
+  cout<<"Enter prefix expression to be evaluated"<<endl;
+  cin>>input;
+  reverse(input.begin(),input.end());
+  double answer=0;
+  for(int i=0;i<input.length();i++){
+    if(isdigit(input[i])){
+      double x = input[i] -48;
+      push(stack,x);
+
+    }else if(input[i]=='+'||input[i]=='-'||input[i]=='*'||input[i]=='/'){
+      double a = pop(stack);
+      double b = pop(stack);
+      switch(input[i]){
+        case '+':
+        answer=a+b;
+        break;
+        case '-':
+        answer=a-b;
+        
+        break;
+        case '*':
+        answer=(a*b);
+        
+        break;
+        case '/':
+        answer=(a/b);
+        
+        break;
+      }
+      push(stack,answer);
+    }
+  }
+  if(answer< 0){
+    return pop(stack)*-1;
+  }else{
+  return pop(stack);
+}
 }
