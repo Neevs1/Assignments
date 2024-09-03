@@ -9,3 +9,15 @@ struct node{
   node* right;
 };
 
+node* createNode(char input){
+    node* node = (struct node*)malloc(sizeof(struct node));
+    node->data = input;
+}
+
+int main(){
+    
+
+
+    return 0;
+}
+
