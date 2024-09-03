@@ -20,6 +20,10 @@ node* createNode(char input){
     return node;
 }
 
+void push(struct node*){
+    
+}
+
 int main(){
    string input;
    cout<<"Enter input \n";
