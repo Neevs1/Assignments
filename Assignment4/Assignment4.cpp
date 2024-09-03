@@ -21,7 +21,7 @@ node* createNode(char input){
 }
 
 void push(struct node*){
-    
+
 }
 
 int main(){
