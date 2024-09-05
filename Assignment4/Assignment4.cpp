@@ -1,5 +1,7 @@
 #include <iostream>
 #include <cctype>
+#include <algorithm>
+#include <stack>
 using namespace std;
 
 struct node{
