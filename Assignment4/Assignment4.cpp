@@ -43,25 +43,47 @@ node* buildtree(string input){
   
 }
 
+
+
+void inorder(struct node*);
+
+
+int main(){
+   int choice;
+   string input;
+   cout<<"Enter whether input is prefix or postfix \n 1. Type 1 for Postfix \n 2. Type 2 for prefix\n";
+   cin>>choice;
+   cout<<"Enter input string"<<endl;
+   cin>>input;
+   node* tree;
+   switch(choice){
+    case 1:
+    tree = buildtree(input);
+    break;
+    case 2:
+    reverse(input.begin(),input.end());
+    tree = buildtree(input);
+    break;
+    default:
+    cout<<"Invalid input"<<endl;
+    
+
+   }
+   
+  cout<<"\nInorder is\n";
+  inorder(tree);
+  cout<<endl;
+
+
+    return 0;
+}
+
 void inorder(struct node* root) {
     if (root) {
         inorder(root->left);
         cout<<(root->data);
         inorder(root->right);
     }
-}
-
-
-
-int main(){
-   string input;
-   cout<<"Enter input \n";
-   cin>>input;
-   node* tree = buildtree(input);
-   inorder(tree);
-   
-
-
-    return 0;
+    
 }
 
