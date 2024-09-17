@@ -89,7 +89,21 @@ int main(){
    }
    
    cout<<"Enter choice of traversal"<<endl;
-   
+   cout<<"1.Inorder\n2.Postorder\n3.Preorder\n";
+   cin>>choice;
+   switch(choice){
+    case 1:
+    inorder(tree);
+    break;
+    case 2:
+    postorder(tree);
+    break;
+    case 3:
+    preorder(tree);
+    break;
+    default:
+    cout<<"Invalid choice"<<endl;
+   }
    
 
 
