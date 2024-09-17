@@ -68,11 +68,28 @@ void postorder(struct node* root){
 }
 
 int main(){
+   int choice;
+   cout<<"Please enter whether string is postfix or prefix"<<endl;
+   cin>>choice; 
    string input;
    cout<<"Enter input \n";
    cin>>input;
-   node* tree = buildtree(input);
-   inorder(tree);
+   node* tree;
+   switch(choice){
+    case 1:
+    tree = buildtree(input);
+    break;
+    case 2:
+    reverse(input.begin(),input.end());
+    tree = buildtree(input);
+    break;
+    default:
+    cout<<"Invalid choice of input"<<endl;
+    break;
+   }
+   
+   cout<<"Enter choice of traversal"<<endl;
+   
    
 
 
