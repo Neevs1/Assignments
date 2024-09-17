@@ -51,7 +51,21 @@ void inorder(struct node* root) {
     }
 }
 
+void preorder(struct node* root){
+  if(root){
+    cout<<(root->data);
+    preorder(root->left);
+    preorder(root->right);
+  }
+}
 
+void postorder(struct node* root){
+  if(root){
+    postorder(root->left);
+    postorder(root->right);
+    cout<<(root->data);
+  }
+}
 
 int main(){
    string input;
