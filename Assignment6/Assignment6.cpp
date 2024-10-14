@@ -7,7 +7,7 @@ using namespace std;
 struct N {   //node declaration
     int k;
    N *l, *r;
-   bool leftTh, rightTh;
+   bool leftTh,  rightTh;
 };
 
 //global root
@@ -81,27 +81,32 @@ void displayTree() { //print the tree
 
 void preorderDisplayTree(){
     N *temp = root, *p;
-    for(;;){
-        if(root==NULL){
-            cout<<"Tree is empty"<<endl;
-            return;
+   for (;;) {
+  	p = temp;
+    
+    // Visit the current node (pre-order)
+    if (temp != root) {
+        cout << temp->k << " ";
+    }
+
+    // If there is a left child, move to it
+    if (!temp->leftTh) {
+        temp = temp->l;
+    } 
+    // Else move to the right threaded node
+    else {
+        while (temp->rightTh && temp->r != root) {
+            temp = temp->r;
         }
-        p = temp;
-        while(p!=NULL){
-            cout<<p->k<<" ";
-            if(p->leftTh==false){
-                p = p->l;
-            }
-            else if(p->rightTh==false){
-                p = p->r;
-            }else{
-                while(p->rightTh==true&&p!=NULL){
-                    p = p->r;
-                }
-            }
+        temp = temp->r;
+        if (temp == root) {
+            break;
         }
     }
+   }
+   cout<<endl;
 }
+
 
 int main() {
    
@@ -126,6 +131,11 @@ int main() {
         	cout<<"In-order Display tree: \n ";
         	displayTree();
         	break;
+        case 3:
+            cout<<"Pre-order Display tree: \n";
+            preorderDisplayTree();
+            cout<<endl;
+            break;
      	case 6:
         	exit(1);
      	default:
@@ -135,3 +145,75 @@ int main() {
    cout<<"\n";
    return 0;
 }
+/*
+Sample output
+Inorder ThreadedBinaryTree
+1. Insert 
+2. Inorder Traversal
+3. Preorder Traversal
+6. Exit
+Enter Your Choice: 1 
+Enter integer element to insert: 50
+1. Insert 
+2. Inorder Traversal
+3. Preorder Traversal
+6. Exit
+Enter Your Choice: 1
+Enter integer element to insert: 25
+1. Insert
+2. Inorder Traversal
+3. Preorder Traversal
+6. Exit
+Enter Your Choice: 1
+Enter integer element to insert: 75
+1. Insert
+2. Inorder Traversal
+3. Preorder Traversal
+6. Exit
+Enter Your Choice: 1
+Enter integer element to insert: 20
+1. Insert
+2. Inorder Traversal
+3. Preorder Traversal
+6. Exit
+Enter Your Choice: 1
+Enter integer element to insert: 40
+1. Insert
+2. Inorder Traversal
+3. Preorder Traversal
+6. Exit
+Enter Your Choice: 1
+Enter integer element to insert: 60
+1. Insert
+2. Inorder Traversal
+3. Preorder Traversal
+6. Exit
+Enter Your Choice: 1
+Enter integer element to insert: 80
+1. Insert
+2. Inorder Traversal
+3. Preorder Traversal
+6. Exit
+Enter Your Choice: 3
+Pre-order Display tree:
+50 25 20 40 75 60 80
+
+1. Insert
+2. Inorder Traversal
+3. Preorder Traversal
+6. Exit
+Enter Your Choice: 1
+Enter integer element to insert: 85
+1. Insert
+2. Inorder Traversal
+3. Preorder Traversal
+6. Exit
+Enter Your Choice: 2
+In-order Display tree:
+ 20 25 40 50 60 75 80 85
+1. Insert
+2. Inorder Traversal
+3. Preorder Traversal
+6. Exit
+Enter Your Choice: 6
+*/
