@@ -79,6 +79,30 @@ void displayTree() { //print the tree
    cout<<endl;
 }
 
+void preorderDisplayTree(){
+    N *temp = root, *p;
+    for(;;){
+        if(root==NULL){
+            cout<<"Tree is empty"<<endl;
+            return;
+        }
+        p = temp;
+        while(p!=NULL){
+            cout<<p->k<<" ";
+            if(p->leftTh==false){
+                p = p->l;
+            }
+            else if(p->rightTh==false){
+                p = p->r;
+            }else{
+                while(p->rightTh==true&&p!=NULL){
+                    p = p->r;
+                }
+            }
+        }
+    }
+}
+
 int main() {
    
    cout<<"Inorder ThreadedBinaryTree\n";
