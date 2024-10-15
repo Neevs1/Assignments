@@ -62,10 +62,11 @@ void Graph::kruskal() {
   }
 }
 void Graph::print() {
-  cout << "Edge :"
+  cout << "Department 1 - Department 2 :"
      << " Weight" << endl;
   for (int i = 0; i < T.size(); i++) {
-    cout << T[i].second.first << " - " << T[i].second.second << " : "
+    string department[]={"Printing","Electrical","Mechanical","I.T.","Computer","E&TC"};
+    cout << department[T[i].second.first] << " - " << department[T[i].second.second] << " : "
        << T[i].first;
     cout << endl;
   }
