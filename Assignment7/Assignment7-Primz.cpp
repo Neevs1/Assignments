@@ -20,6 +20,7 @@
    {0, 42, 66, 31, 0}};
 
  int main() {
+   string buildings[] = {"First Year","Main Building","Auditorium","Science College","Ground"};
    int no_edge;  // number of edge
 
    // create a array to track selected vertex
@@ -43,7 +44,7 @@
    int y;  //  col number
 
    // print for edge and weight
-   cout << "Edge"
+   cout << "Building 1 - Building 2"
   	<< " : "
   	<< "Weight";
    cout << endl;
@@ -70,7 +71,7 @@
      	}
    	}
  	}
- 	cout << x << " - " << y << " :  " << G[x][y];
+ 	cout << buildings[x]<< " - " << buildings[y]<< " :  " << G[x][y];
  	cout << endl;
  	selected[y] = true;
  	no_edge++;
