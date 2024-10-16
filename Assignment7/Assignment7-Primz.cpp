@@ -80,4 +80,12 @@
    return 0;
  }
   
+/*
+Output
+Building 1 - Building 2 : Weight
+First Year - Main Building :  9
+Main Building - Science College :  19
+Science College - Ground :  31
+Science College - Auditorium :  51
 
+*/

@@ -93,4 +93,14 @@ int main() {
   return 0;
 }
 
+/*
+Output
+Department 1 - Department 2 : Weight
+Electrical - Mechanical : 2
+Mechanical - E&TC : 2
+Mechanical - I.T. : 3
+I.T. - Computer : 3
+Printing - Electrical : 4
 
+
+*/
