@@ -46,12 +46,30 @@
   
    // Driver code
    int main() {
- 	int arr[] = {1, 12, 9, 5, 6, 10};
- 	int n = sizeof(arr) / sizeof(arr[0]);
+ 	int n;
+	cout<<"Enter length of array: "<<endl;
+	cin>>n;
+	int arr[n];
+	for(int i=0;i<n;i++){
+		cout<<"Enter element "<<i+1<<": ";
+		cin>>arr[i];
+	}
  	heapSort(arr, n);
   
  	cout << "Sorted array is \n";
  	printArray(arr, n);
    }
   
+/*
+Output:
+Enter length of array: 
+5
+Enter element 1: 34
+Enter element 2: 23
+Enter element 3: 65
+Enter element 4: 76
+Enter element 5: 3
+Sorted array is
+3 23 34 65 76
 
+*/
