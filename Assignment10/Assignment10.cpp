@@ -69,7 +69,7 @@ void deleteLine(){
     cout<<"Enter roll number of student to be deleted: ";
     cin>>roll;
     string line;
-    tempf.open("temp.txt", ios::app);
+    tempf.open("temp.txt",std::ios::out);
     while(getline(file,line)){
         string temp = line.substr(0,4);
         if(temp == to_string(roll)){
@@ -91,14 +91,9 @@ void deleteLine(){
         }
     }
     file.close();
-    //remove("StudentRecord.txt");
-    f2.open("StudentRecord.txt");
-    while(getline(tempf,line)){
-        f2 << line << endl;
-    }   
+    remove("StudentRecord.txt");
     tempf.close();
-    remove("temp.txt");
-    f2.close();
+    rename("temp.txt","StudentRecord.txt");
     if(found){
         cout<<"Record deleted successfully\n";
     }else{  
