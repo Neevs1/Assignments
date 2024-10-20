@@ -63,30 +63,49 @@ void display(){
 
 void deleteLine(){
     bool found = false;
-    fstream file,tempf;
+    fstream file,tempf,f2;
     file.open("StudentRecord.txt");
     int roll;
     cout<<"Enter roll number of student to be deleted: ";
     cin>>roll;
     string line;
+    tempf.open("temp.txt", ios::app);
     while(getline(file,line)){
         string temp = line.substr(0,4);
         if(temp == to_string(roll)){
             found = true;
-            line="";
-            tempf.open("temp.txt", ios::app);
+            continue;
+            //line="";
+            /*tempf.open("temp.txt", ios::app);
             while(getline(file,line)){
                 tempf << line << endl;
             }
             while(getline(tempf,line)){
                 file << line << endl;
-            }
-            cout<<"Record deleted successfully\n";
-            remove("temp.txt");
-            break;
+            }*/
+            //cout<<"Record deleted successfully\n";
+            //remove("temp.txt");
+            
+        }else{
+            tempf << line << endl;
         }
     }
     file.close();
+    //remove("StudentRecord.txt");
+    f2.open("StudentRecord.txt");
+    while(getline(tempf,line)){
+        f2 << line << endl;
+    }   
+    tempf.close();
+    remove("temp.txt");
+    f2.close();
+    if(found){
+        cout<<"Record deleted successfully\n";
+    }else{  
+        cout<<"Record not found\n";
+    }
+
+    
 }
 
 int main(){
