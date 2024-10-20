@@ -75,17 +75,7 @@ void deleteLine(){
         if(temp == to_string(roll)){
             found = true;
             continue;
-            //line="";
-            /*tempf.open("temp.txt", ios::app);
-            while(getline(file,line)){
-                tempf << line << endl;
-            }
-            while(getline(tempf,line)){
-                file << line << endl;
-            }*/
-            //cout<<"Record deleted successfully\n";
-            //remove("temp.txt");
-            
+           
         }else{
             tempf << line << endl;
         }
@@ -133,3 +123,146 @@ int main(){
 
 
 }
+
+/*
+Output: 
+1. Add record
+2. Search record
+3. Display all records
+4. Delete
+5.Exit
+Enter your choice: 1
+Enter name: (Use underscore instead of space) Neevan_Redkar
+Enter address: (Use underscore instead of space) Sinhagad_Road,Pune-30
+Enter roll no: 3069
+Enter division: B
+1. Add record
+2. Search record
+3. Display all records
+4. Delete
+5.Exit
+Enter your choice: 1
+Enter name: (Use underscore instead of space) Aryan_Parihar
+Enter address: (Use underscore instead of space) Dhayri_Phata,Pune-41
+Enter roll no: 3030
+Enter division: C
+1. Add record
+2. Search record
+3. Display all records
+4. Delete
+5.Exit
+Enter your choice: 1
+Enter name: (Use underscore instead of space) Aryan_Dhamdhere
+Enter address: (Use underscore instead of space) Warje,Pune-52
+Enter roll no: 3074
+Enter division: H
+1. Add record
+2. Search record
+3. Display all records
+4. Delete
+5.Exit
+Enter your choice: 2
+Enter roll number of student to be found: 3080
+Record not found
+1. Add record
+2. Search record
+3. Display all records
+4. Delete
+5.Exit
+Enter your choice: 2
+Enter roll number of student to be found: 3030
+3030 Aryan Parihar C Dhayri Phata,Pune-41
+1. Add record
+2. Search record
+3. Display all records
+4. Delete
+5.Exit
+Enter your choice: 1
+Enter name: (Use underscore instead of space) Riddhi_Shete
+Enter address: (Use underscore instead of space) ????
+Enter roll no: 3067
+Enter division: ?
+1. Add record
+2. Search record
+3. Display all records
+4. Delete
+5.Exit
+Enter your choice: 1
+Enter name: (Use underscore instead of space) Chirag_Budhbaware
+Enter address: (Use underscore instead of space) Near_PVG,Pune-09
+Enter roll no: 3059
+Enter division: B
+1. Add record
+2. Search record
+3. Display all records
+4. Delete
+5.Exit
+Enter your choice: 4
+Enter roll number of student to be deleted: 3067
+Record deleted successfully
+1. Add record
+2. Search record
+3. Display all records
+4. Delete
+5.Exit
+Enter your choice: 3
+3069 Neevan Redkar B Sinhagad Road,Pune-30
+3030 Aryan Parihar C Dhayri Phata,Pune-41
+3074 Aryan Dhamdhere H Warje,Pune-52
+3059 Chirag Budhbaware B Near PVG,Pune-09
+1. Add record
+2. Search record
+3. Display all records
+4. Delete
+5.Exit
+Enter your choice: 4
+Enter roll number of student to be deleted: 3069
+Record deleted successfully
+1. Add record
+2. Search record
+3. Display all records
+4. Delete
+5.Exit
+Enter your choice: 3
+3030 Aryan Parihar C Dhayri Phata,Pune-41
+3074 Aryan Dhamdhere H Warje,Pune-52
+3059 Chirag Budhbaware B Near PVG,Pune-09
+1. Add record
+2. Search record
+3. Display all records
+4. Delete
+5.Exit
+Enter your choice: 1
+Enter name: (Use underscore instead of space) Neevan_Redkar
+Enter address: (Use underscore instead of space) Sinhagad_Road,Pune-30
+Enter roll no: 3069
+Enter division: B
+1. Add record
+2. Search record
+3. Display all records
+4. Delete
+5.Exit
+Enter your choice: 2
+Enter roll number of student to be found: 3067
+Record not found
+1. Add record
+2. Search record
+3. Display all records
+4. Delete
+5.Exit
+Enter your choice: 3
+3030 Aryan Parihar C Dhayri Phata,Pune-41
+3074 Aryan Dhamdhere H Warje,Pune-52
+3059 Chirag Budhbaware B Near PVG,Pune-09
+3069 Neevan Redkar B Sinhagad Road,Pune-30
+1. Add record
+2. Search record
+3. Display all records
+4. Delete
+5.Exit
+Enter your choice: 5
+Exiting
+
+
+
+*/
